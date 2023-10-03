@@ -1,0 +1,10 @@
+[Unit]
+Description= Fan control for buggy dells
+
+[Service]
+Type = simple
+Restart=always
+ExecStart= /usr/local/bin/fan-control.bash
+
+[Install]
+WantedBy=multi-user.target

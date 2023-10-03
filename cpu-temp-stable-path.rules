@@ -1,0 +1,8 @@
+# Give CPU temp a stable device path
+
+ACTION=="add|change", KERNELS=="coretemp.0", SUBSYSTEM=="hwmon", ATTR{temp2_label}=="Core 0", RUN+="/bin/sh -c 'ln -s /sys$devpath/temp2_input /dev/cpu_die_temp_0'"
+ACTION=="add|change", KERNELS=="coretemp.0", SUBSYSTEM=="hwmon", ATTR{temp3_label}=="Core 1", RUN+="/bin/sh -c 'ln -s /sys$devpath/temp3_input /dev/cpu_die_temp_1'"
+ACTION=="add|change", KERNELS=="coretemp.0", SUBSYSTEM=="hwmon", ATTR{temp4_label}=="Core 2", RUN+="/bin/sh -c 'ln -s /sys$devpath/temp4_input /dev/cpu_die_temp_2'"
+ACTION=="add|change", KERNELS=="coretemp.0", SUBSYSTEM=="hwmon", ATTR{temp5_label}=="Core 3", RUN+="/bin/sh -c 'ln -s /sys$devpath/temp5_input /dev/cpu_die_temp_3'"
+ACTION=="add|change", KERNELS=="coretemp.0", SUBSYSTEM=="hwmon", ATTR{temp6_label}=="Core 4", RUN+="/bin/sh -c 'ln -s /sys$devpath/temp6_input /dev/cpu_die_temp_4'"
+
