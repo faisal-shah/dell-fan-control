@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+devpath="${devpath:-$1}"
+hwm_path="/sys${devpath}"
+
+shopt -s nullglob
+re='^Core ([0-9]+)$'
+for label_file in "$hwm_path"/temp*_label; do
+    label_val=$(cat "$label_file" 2>/dev/null) || continue
+    [[ $label_val =~ $re ]] || continue
+    core_num="${BASH_REMATCH[1]}"
+    input_file="${label_file%_label}_input"
+    symlink="/dev/cpu_die_temp_${core_num}"
+    ln -sf "$input_file" "$symlink"
+done
+shopt -u nullglob

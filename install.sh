@@ -8,6 +8,7 @@ sudo bash -c "grep -wq i8k /etc/modules || echo i8k >> /etc/modules"
 
 # copy stuff
 sudo cp fan-control.bash /usr/local/bin/
+sudo cp create-temp-symlinks /usr/local/bin/
 sudo cp fan-control.service /etc/systemd/system/
 sudo cp cpu-temp-stable-path.rules /etc/udev/rules.d/
 
